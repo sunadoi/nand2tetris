@@ -39,5 +39,39 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+      And(a=instruction[3], b=instruction[15], out=writeM); // p70, instruction[3]が1はMに書き込み。instruction[15]が1は計算命令
+      And(a=instruction[4], b=instruction[15], out=loadD); // p70, instruction[4]が1はDに書き込み。
+      Not(in=instruction[15], out=notin15);
+      Or(a=instruction[5], b=notin15, out=loadA);
+
+      Mux16(a=instruction, b=aluout, sel=instruction[15], out=mux0out);
+      ARegister(in=mux0out, load=loadA, out=aout, out[0..14]=addressM);
+      PC(in=aout, load=loadPC, inc=true, reset=reset, out[0..14]=pc);
+      Mux16(a=aout, b=inM, sel=instruction[12], out=mux1out); // p71, instruction[12]が0 → Aを使用、1 → Mを使用
+      DRegister(in=aluout, load=loadD, out=dout);
+
+      ALU(
+        x=dout,
+        y=mux1out,
+        zx=instruction[11],
+        nx=instruction[10], // ???
+        zy=instruction[9],
+        ny=instruction[8],
+        f=instruction[7],
+        no=instruction[6],
+        out=aluout,
+        out=outM,
+        zr=zr,
+        ng=ng
+      );
+
+      Not(in=zr, out=notzr);
+      Not(in=ng, out=notng);
+      And(a=instruction[1], b=zr, out=outJump1);
+      And(a=instruction[2], b=ng, out=outJump2);
+      Or(a=outJump1, b=outJump2, out=outJump1or2);
+      And(a=notzr, b=notng, out=outPositive);
+      And(a=instruction[0], b=outPositive, out=outJump0);
+      Or(a=outJump0, b=outJump1or2, out=outJump);
+      And(a=instruction[15], b=outJump, out=loadPC);
 }

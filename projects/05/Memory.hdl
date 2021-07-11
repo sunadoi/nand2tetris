@@ -27,5 +27,11 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    // 16384-24575がscreenなのでaddress13と14が10だったらこの範囲になる。11だったら24576になるのでkeyboard
+    DMux4Way(in=load, sel=address[13..14], a=ram0, b=ram1, c=screen, d=keyboard);
+    Or(a=ram0, b=ram1, out=ramload);
+    RAM16K(in=in, load=ramload, address=address[0..13], out=ramout);
+    Screen(in=in, load=screen, address=address[0..12], out=screenout);
+    Keyboard(out=kbdout);
+    Mux4Way16(a=ramout, b=ramout, c=screenout, d=kbdout, sel=address[13..14], out=out);
 }

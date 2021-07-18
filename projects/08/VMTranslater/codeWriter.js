@@ -6,10 +6,25 @@ const {
 
 class CodeWriter {
   constructor(filePath) {
-    this.outputPath = __dirname + '/' + filePath.slice(0, filePath.lastIndexOf('.')) + '.asm';
-    this.fileName = this.outputPath.slice(this.outputPath.lastIndexOf('/') + 1);
-    this.labelNum = 0;
+    this.outputPath = __dirname + '/' + filePath;
     fs.writeFileSync(this.outputPath, '');
+    this.labelNum = 0;
+    this.returnAddress = 0;
+    this.writeInit();
+  }
+
+  writeInit() {
+    this.writeCodes([
+      '@256',
+      'D=A',
+      '@SP',
+      'M=D'
+    ]);
+    this.writeCall('Sys.init', 0);
+  }
+
+  setFileName(fileName) {
+    this.fileName = fileName;
   }
 
   writeArithmetic(command) {
@@ -152,6 +167,129 @@ class CodeWriter {
     if (segment === "that") return "@THAT";
     if (segment === "pointer") return "@3";
     if (segment === "temp") return "@5";
+  }
+
+  writeLabel(label) {
+    this.writeCodes([`(${label})`]);
+  }
+
+  writeGoto(label) {
+    this.writeCodes([
+      `@${label}`,
+      '0;JMP'
+    ]);
+  }
+
+  writeIf(label) {
+    this.writePopToA();
+    this.writeCodes([
+      "D=M",
+      `@${label}`,
+      "D;JNE"
+    ]);
+  }
+
+  writeFunction(f, n) {
+    this.writeCodes([
+      `(${f})`,
+      "D=0",
+    ])
+    new Array(n).map((_, i) => this.writePushFromD())
+  }
+
+  writeCall(f, m) {
+    this.writeCodes([
+      `@RETURN_ADDRESS_${this.returnAddress}`,
+      'D=A',
+    ]);
+    this.writePushFromD()
+    this.writeCodes([
+      "@LCL",
+      "D=M",
+    ])
+    this.writePushFromD();
+    this.writeCodes([
+      '@ARG',
+      'D=M',
+    ]);
+    this.writePushFromD();
+    this.writeCodes([
+      '@THIS',
+      'D=M',
+    ]);
+    this.writePushFromD();
+    this.writeCodes([
+      '@THAT',
+      'D=M',
+    ]);
+    this.writePushFromD();
+    this.writeCodes([
+      "@SP",
+      "D=M",
+      `@${m}`,
+      "D=D-A",
+      "@5",
+      "D=D-A",
+      "@ARG",
+      "M=D", // ARG = SP-n-5
+      "@SP",
+      "D=M",
+      "@LCL",
+      "M=D", // LCL = SP
+    ])
+    this.writeGoto(`@${f}`);
+    this.writeCodes([`(@RETURN_ADDRESS_${this.returnAddress})`])
+    this.returnAddress++;
+  }
+
+  writeReturn() {
+    this.writeCodes([
+      "@LCL",
+      "D=M",
+      "@R13", // R13にLCLを一時的に格納
+      "M=D",
+      "@5",
+      "D=A",
+      "@R13",
+      "A=M-D", // FEAME-5
+      "D=M",
+      "@R14", // R14にRETを一時的に格納
+      "M=D"
+    ])
+    this.writePopToA();
+    this.writeCodes([
+      "D=M",
+      "@ARG",
+      "A=M",
+      "M=D",
+      "@ARG",
+      "D=M+1",
+      "@SP",
+      "M=D", // SP = ARG+1
+      "@R13",
+      "AM=M-1",
+      "D=M",
+      "@THAT",
+      "M=D", // THAT = *(FRAME - 1)
+      '@R13',
+      'AM=M-1',
+      'D=M',
+      '@THIS',
+      'M=D', // THIS = *(FRAME - 2)
+      '@R13',
+      'AM=M-1',
+      'D=M',
+      '@ARG',
+      'M=D', // ARG = *(FRAME - 3)
+      '@R13',
+      'AM=M-1',
+      'D=M',
+      '@LCL',
+      'M=D', // LCL = *(FRAME - 4)
+      '@R14',
+      'A=M',
+      '0;JMP'
+    ])
   }
 }
 

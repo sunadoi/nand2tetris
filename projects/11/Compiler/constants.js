@@ -52,8 +52,42 @@ const SYMBOLS = {
   TILDE: '~'
 };
 
+const KIND = {
+  STATIC: 'STATIC',
+  FIELD: 'FIELD',
+  ARGUMENT: 'ARGUMENT',
+  VAR: 'VAR',
+  NONE: 'NONE'
+};
+
+const SEGMENT = {
+  CONST: 'constant',
+  ARGUMENT: 'argument',
+  LOCAL: 'local',
+  STATIC: 'static',
+  THIS: 'this',
+  THAT: 'that',
+  POINTER: 'pointer',
+  TEMP: 'temp'
+};
+
+const COMMAND = {
+  ADD: 'add',
+  SUB: 'sub',
+  NEG: 'neg',
+  AND: 'and',
+  OR: 'or',
+  NOT: 'not',
+  LT: 'lt',
+  GT: 'gt',
+  EQ: 'eq'
+};
+
 module.exports = {
   TOKEN_TYPE,
   KEYWORDS,
   SYMBOLS,
+  KIND,
+  SEGMENT,
+  COMMAND
 }

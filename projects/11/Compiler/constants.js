@@ -53,11 +53,11 @@ const SYMBOLS = {
 };
 
 const KIND = {
-  STATIC: 'STATIC',
-  FIELD: 'FIELD',
-  ARGUMENT: 'ARGUMENT',
-  VAR: 'VAR',
-  NONE: 'NONE'
+  STATIC: 'static',
+  FIELD: 'field',
+  ARGUMENT: 'argument',
+  VAR: 'var',
+  NONE: 'none'
 };
 
 const SEGMENT = {

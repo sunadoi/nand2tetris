@@ -15,8 +15,7 @@
       <varDec>
         <keyword> var </keyword>
         <keyword> int </keyword>
-        <identifier> value </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-        <identifier> value </identifier> isDefined: true, type: int, kind: VAR, index: 0
+        <identifier> value </identifier> isDefined: true, type: int, kind: var, index: 0
         <symbol> ; </symbol>
       </varDec>
       <statements>
@@ -53,7 +52,7 @@
         </doStatement>
         <letStatement>
           <keyword> let </keyword>
-          <identifier> value </identifier> isDefined: false, type: int, kind: VAR, index: 0
+          <identifier> value </identifier> isDefined: false, type: int, kind: var, index: 0
           <symbol> = </symbol>
           <expression>
             <term>
@@ -82,7 +81,7 @@
           <expressionList>
             <expression>
               <term>
-                <identifier> value </identifier> isDefined: false, type: int, kind: VAR, index: 0
+                <identifier> value </identifier> isDefined: false, type: int, kind: var, index: 0
               </term>
             </expression>
           </expressionList>
@@ -104,8 +103,7 @@
     <symbol> ( </symbol>
     <parameterList>
       <keyword> int </keyword>
-      <identifier> value </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-      <identifier> value </identifier> isDefined: true, type: int, kind: ARGUMENT, index: 0
+      <identifier> value </identifier> isDefined: true, type: int, kind: argument, index: 0
     </parameterList>
     <symbol> ) </symbol>
     <subroutineBody>
@@ -113,24 +111,21 @@
       <varDec>
         <keyword> var </keyword>
         <keyword> int </keyword>
-        <identifier> mask </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-        <identifier> mask </identifier> isDefined: true, type: int, kind: VAR, index: 0
+        <identifier> mask </identifier> isDefined: true, type: int, kind: var, index: 0
         <symbol> , </symbol>
-        <identifier> position </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-        <identifier> position </identifier> isDefined: true, type: int, kind: VAR, index: 1
+        <identifier> position </identifier> isDefined: true, type: int, kind: var, index: 1
         <symbol> ; </symbol>
       </varDec>
       <varDec>
         <keyword> var </keyword>
         <keyword> boolean </keyword>
-        <identifier> loop </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-        <identifier> loop </identifier> isDefined: true, type: boolean, kind: VAR, index: 2
+        <identifier> loop </identifier> isDefined: true, type: boolean, kind: var, index: 2
         <symbol> ; </symbol>
       </varDec>
       <statements>
         <letStatement>
           <keyword> let </keyword>
-          <identifier> loop </identifier> isDefined: false, type: boolean, kind: VAR, index: 2
+          <identifier> loop </identifier> isDefined: false, type: boolean, kind: var, index: 2
           <symbol> = </symbol>
           <expression>
             <term>
@@ -144,7 +139,7 @@
           <symbol> ( </symbol>
           <expression>
             <term>
-              <identifier> loop </identifier> isDefined: false, type: boolean, kind: VAR, index: 2
+              <identifier> loop </identifier> isDefined: false, type: boolean, kind: var, index: 2
             </term>
           </expression>
           <symbol> ) </symbol>
@@ -152,11 +147,11 @@
           <statements>
             <letStatement>
               <keyword> let </keyword>
-              <identifier> position </identifier> isDefined: false, type: int, kind: VAR, index: 1
+              <identifier> position </identifier> isDefined: false, type: int, kind: var, index: 1
               <symbol> = </symbol>
               <expression>
                 <term>
-                  <identifier> position </identifier> isDefined: false, type: int, kind: VAR, index: 1
+                  <identifier> position </identifier> isDefined: false, type: int, kind: var, index: 1
                 </term>
                 <symbol> + </symbol>
                 <term>
@@ -167,7 +162,7 @@
             </letStatement>
             <letStatement>
               <keyword> let </keyword>
-              <identifier> mask </identifier> isDefined: false, type: int, kind: VAR, index: 0
+              <identifier> mask </identifier> isDefined: false, type: int, kind: var, index: 0
               <symbol> = </symbol>
               <expression>
                 <term>
@@ -178,7 +173,7 @@
                   <expressionList>
                     <expression>
                       <term>
-                        <identifier> mask </identifier> isDefined: false, type: int, kind: VAR, index: 0
+                        <identifier> mask </identifier> isDefined: false, type: int, kind: var, index: 0
                       </term>
                     </expression>
                   </expressionList>
@@ -197,7 +192,7 @@
                     <symbol> ( </symbol>
                     <expression>
                       <term>
-                        <identifier> position </identifier> isDefined: false, type: int, kind: VAR, index: 1
+                        <identifier> position </identifier> isDefined: false, type: int, kind: var, index: 1
                       </term>
                       <symbol> &gt; </symbol>
                       <term>
@@ -224,11 +219,11 @@
                             <symbol> ( </symbol>
                             <expression>
                               <term>
-                                <identifier> value </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+                                <identifier> value </identifier> isDefined: false, type: int, kind: argument, index: 0
                               </term>
                               <symbol> &amp; </symbol>
                               <term>
-                                <identifier> mask </identifier> isDefined: false, type: int, kind: VAR, index: 0
+                                <identifier> mask </identifier> isDefined: false, type: int, kind: var, index: 0
                               </term>
                             </expression>
                             <symbol> ) </symbol>
@@ -258,7 +253,7 @@
                           </term>
                           <symbol> + </symbol>
                           <term>
-                            <identifier> position </identifier> isDefined: false, type: int, kind: VAR, index: 1
+                            <identifier> position </identifier> isDefined: false, type: int, kind: var, index: 1
                           </term>
                         </expression>
                         <symbol> , </symbol>
@@ -289,7 +284,7 @@
                           </term>
                           <symbol> + </symbol>
                           <term>
-                            <identifier> position </identifier> isDefined: false, type: int, kind: VAR, index: 1
+                            <identifier> position </identifier> isDefined: false, type: int, kind: var, index: 1
                           </term>
                         </expression>
                         <symbol> , </symbol>
@@ -312,7 +307,7 @@
               <statements>
                 <letStatement>
                   <keyword> let </keyword>
-                  <identifier> loop </identifier> isDefined: false, type: boolean, kind: VAR, index: 2
+                  <identifier> loop </identifier> isDefined: false, type: boolean, kind: var, index: 2
                   <symbol> = </symbol>
                   <expression>
                     <term>
@@ -342,8 +337,7 @@
     <symbol> ( </symbol>
     <parameterList>
       <keyword> int </keyword>
-      <identifier> mask </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-      <identifier> mask </identifier> isDefined: true, type: int, kind: ARGUMENT, index: 0
+      <identifier> mask </identifier> isDefined: true, type: int, kind: argument, index: 0
     </parameterList>
     <symbol> ) </symbol>
     <subroutineBody>
@@ -354,7 +348,7 @@
           <symbol> ( </symbol>
           <expression>
             <term>
-              <identifier> mask </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+              <identifier> mask </identifier> isDefined: false, type: int, kind: argument, index: 0
             </term>
             <symbol> = </symbol>
             <term>
@@ -382,7 +376,7 @@
               <keyword> return </keyword>
               <expression>
                 <term>
-                  <identifier> mask </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+                  <identifier> mask </identifier> isDefined: false, type: int, kind: argument, index: 0
                 </term>
                 <symbol> * </symbol>
                 <term>
@@ -405,16 +399,13 @@
     <symbol> ( </symbol>
     <parameterList>
       <keyword> int </keyword>
-      <identifier> startAddress </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-      <identifier> startAddress </identifier> isDefined: true, type: int, kind: ARGUMENT, index: 0
+      <identifier> startAddress </identifier> isDefined: true, type: int, kind: argument, index: 0
       <symbol> , </symbol>
       <keyword> int </keyword>
-      <identifier> length </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-      <identifier> length </identifier> isDefined: true, type: int, kind: ARGUMENT, index: 1
+      <identifier> length </identifier> isDefined: true, type: int, kind: argument, index: 1
       <symbol> , </symbol>
       <keyword> int </keyword>
-      <identifier> value </identifier> isDefined: true, type: undefined, kind: NONE, index: undefined
-      <identifier> value </identifier> isDefined: true, type: int, kind: ARGUMENT, index: 2
+      <identifier> value </identifier> isDefined: true, type: int, kind: argument, index: 2
     </parameterList>
     <symbol> ) </symbol>
     <subroutineBody>
@@ -425,7 +416,7 @@
           <symbol> ( </symbol>
           <expression>
             <term>
-              <identifier> length </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 1
+              <identifier> length </identifier> isDefined: false, type: int, kind: argument, index: 1
             </term>
             <symbol> &gt; </symbol>
             <term>
@@ -444,13 +435,13 @@
               <expressionList>
                 <expression>
                   <term>
-                    <identifier> startAddress </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+                    <identifier> startAddress </identifier> isDefined: false, type: int, kind: argument, index: 0
                   </term>
                 </expression>
                 <symbol> , </symbol>
                 <expression>
                   <term>
-                    <identifier> value </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 2
+                    <identifier> value </identifier> isDefined: false, type: int, kind: argument, index: 2
                   </term>
                 </expression>
               </expressionList>
@@ -459,11 +450,11 @@
             </doStatement>
             <letStatement>
               <keyword> let </keyword>
-              <identifier> length </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 1
+              <identifier> length </identifier> isDefined: false, type: int, kind: argument, index: 1
               <symbol> = </symbol>
               <expression>
                 <term>
-                  <identifier> length </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 1
+                  <identifier> length </identifier> isDefined: false, type: int, kind: argument, index: 1
                   <symbol> - </symbol>
                   <term>
                     <integerConstant> 1 </integerConstant>
@@ -474,11 +465,11 @@
             </letStatement>
             <letStatement>
               <keyword> let </keyword>
-              <identifier> startAddress </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+              <identifier> startAddress </identifier> isDefined: false, type: int, kind: argument, index: 0
               <symbol> = </symbol>
               <expression>
                 <term>
-                  <identifier> startAddress </identifier> isDefined: false, type: int, kind: ARGUMENT, index: 0
+                  <identifier> startAddress </identifier> isDefined: false, type: int, kind: argument, index: 0
                 </term>
                 <symbol> + </symbol>
                 <term>

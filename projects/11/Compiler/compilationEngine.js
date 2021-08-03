@@ -298,7 +298,7 @@ class CompilationEngine {
     this.compileSymbol();
     this.vmWriter.writeGoto(labelEnd);
 
-    this.vmWriter.writeLabel(labelElse);
+    this.vmWriter.writeLabel(labelElse); // FIXME 自分のコンパイラとbuilt inのコンパイラでアウトプットが違う
     if (this.jackTokenizer.currentToken === KEYWORDS.ELSE) {
       this.compileKeyword();
       this.compileSymbol();
@@ -453,7 +453,7 @@ class CompilationEngine {
     if (this.jackTokenizer.currentToken === SYMBOLS.HYPHEN) {
       this.compileSymbol();
       this.compileTerm();
-      this.vmWriter.writeArithmetic(COMMAND.NEG);
+      this.vmWriter.writeArithmetic(COMMAND.SUB);
     }
     if (this.jackTokenizer.currentToken === SYMBOLS.TILDE) {
       this.compileSymbol();
